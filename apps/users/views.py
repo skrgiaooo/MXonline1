@@ -22,4 +22,6 @@ class LoginView(views.View):
                 login(request,user)
                 return HttpResponseRedirect(reverse('index'))
             else:
-                return render(request,'login.html')
+                return render(request,'login.html',{'msg':'用户名或密码错误','login_form':login_form})
+        else:
+            return render(request,'login.html',{'login_form':login_form})
